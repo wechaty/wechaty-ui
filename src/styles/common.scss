@@ -1,0 +1,65 @@
+html {
+    background: #fff;
+    transition: color 300ms, background-color 300ms;
+    &.dark {
+        filter: contrast(100%) invert(100%);
+        img {
+            filter: hue-rotate(180deg);
+        }
+    }
+}
+.ve_header_row_class_name,
+.el-table__fixed-right-patch {
+    background: $main-bg-color !important;
+}
+.ve_header_cell_class_name {
+    background: $main-bg-color !important;
+}
+.ve_cell_class_name {
+    background: $base-color !important;
+    border-color: $base-color !important;
+}
+.ve_row_class_name {
+    background: $base-color !important;
+}
+.ve_p_10 {
+    padding: 10px;
+}
+//滚动条的宽度
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+//滚动条的滑块
+::-webkit-scrollbar-thumb {
+    background-color: rgba(144, 147, 153, 0.3);
+    border-radius: 3px;
+}
+.ve_select_option_slot {
+    font-size: 12px;
+    float: left;
+    line-height: initial;
+    padding-bottom: 10px;
+    opacity: 0.7;
+}
+.ve_option_box {
+    width: calc(50% - 132px);
+}
+.size-watch {
+    width: 100%;
+    height: 100%;
+    // display: none;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.ve_flex_col {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - #{$nav-height} - 80px);
+}
