@@ -61,7 +61,7 @@
 <script setup>
 import { SET_TOKEN, SET_UNAME } from "@/store/modules/app/type";
 import Common from "@/components/Common";
-import { ref, reactive, toRefs } from "vue";
+import { reactive, toRefs, ref, onMounted } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 const rules = {
@@ -97,6 +97,10 @@ const onSubmit = () => {
         }
     });
 };
+onMounted(async () => {
+    await onSubmit();
+    // maxHeight(pagination, queryForm, toolBar, ve_max_height);
+});
 </script>
 
 <style lang="scss" scoped>
