@@ -6,11 +6,12 @@
  * @Description: In User Settings Edit
  * @FilePath: \vue3-element-admin\src\views\Login.vue
 -->
+<!-- 页面占时废弃 -->
 <template>
     <common>
         <div class="ve_container">
             <el-card :body-style="{ background: 'rgba(0,0,0,0.15)' }">
-                <h1>vue3-element-admin</h1>
+                <h1>Wechaty UI</h1>
                 <transition name="el-fade-in-linear">
                     <el-form
                         :model="form"
@@ -61,7 +62,7 @@
 <script setup>
 import { SET_TOKEN, SET_UNAME } from "@/store/modules/app/type";
 import Common from "@/components/Common";
-import { ref, reactive, toRefs } from "vue";
+import { reactive, toRefs, ref, onMounted } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 const rules = {
@@ -97,6 +98,10 @@ const onSubmit = () => {
         }
     });
 };
+onMounted(async () => {
+    await onSubmit();
+    // maxHeight(pagination, queryForm, toolBar, ve_max_height);
+});
 </script>
 
 <style lang="scss" scoped>

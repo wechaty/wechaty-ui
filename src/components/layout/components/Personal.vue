@@ -51,13 +51,13 @@
                     <arrow-down-bold />
                 </el-icon>
             </span>
-            <template #dropdown>
+            <!-- <template #dropdown>
                 <el-dropdown-menu>
                     <el-dropdown-item :command="{ name: 'Login' }">
                         退出登录
                     </el-dropdown-item>
                 </el-dropdown-menu>
-            </template>
+            </template> -->
         </el-dropdown>
         <!-- <router-link :to="{ name: 'Login' }">
             <el-link :underline="false">退出</el-link>
