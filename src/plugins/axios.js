@@ -12,16 +12,16 @@
 import axios from "axios";
 import Qs from "qs";
 import NProgress from "nprogress";
-import { SET_TOKEN } from "@/store/modules/app/type";
 
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-const install = (app, { router, store, opt }) => {
+const install = (app, { router, opt }) => {
     let config = {
         Global: true,
-        // baseURL: process.env.baseURL || process.env.apiUrl || ""
+        baseURL: "http://dev.chatie.io:8004", // 正常情况取用户输入的服务地址， 目前测试阶段固定获取
+        // baseURL: store.getters.botServer || "http://dev.chatie.io:8004",
         // timeout: 60 * 1000, // Timeout
         // withCredentials: true, // Check cross-site Access-Control
         // {"userName":"Administrator","pwd":"123456"}
@@ -51,9 +51,8 @@ const install = (app, { router, store, opt }) => {
                 });
             }
             loadingCount++;
-            //*请求头添加token
-            const token = store.getters.token;
-            token && (config.headers.Authorization = token);
+            // const token = store.getters.token;
+            // token && (config.headers.Authorization = token);
 
             // Do something before request is sent
             return config;
@@ -68,9 +67,6 @@ const install = (app, { router, store, opt }) => {
     // 响应拦截
     _axios.interceptors.response.use(
         (response) => {
-            // TODO 根据响应头更新token
-            store.dispatch(`app/${SET_TOKEN}`, new Date().getTime());
-
             loadingCount--;
             if (loadingCount <= 0) {
                 NProgress.done();
@@ -78,17 +74,19 @@ const install = (app, { router, store, opt }) => {
             }
 
             let type = "success";
-            if (response.data.code != "00") {
+            if (response.data.code != 200) {
                 type = "error";
             }
             if (ve_message) {
                 ve_message.close();
                 ve_message = null;
             }
-            ve_message = app.config.globalProperties.$message({
-                type,
-                message: response.data.message,
-            });
+            if (type === "error") {
+                ve_message = app.config.globalProperties.$message({
+                    type,
+                    message: response.data.message,
+                });
+            }
             // Do something with response data
             return response.data;
         },
@@ -156,6 +154,7 @@ const install = (app, { router, store, opt }) => {
     );
 
     const method = {
+        put: (url, p, config) => _axios.put(url, p, config),
         post: (url, p, config) => _axios.post(url, p, config),
         get: (url, p, config) =>
             _axios.get(url, Object.assign(config, { params: p })),

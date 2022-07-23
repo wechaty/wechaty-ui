@@ -14,7 +14,6 @@ import store from "@/store";
 import installElementPlus from "@/plugins/element";
 import elementIcon from "@/plugins/svgicon";
 import permission from "@/plugins/permission";
-import mock from "@/plugins/mock";
 import directives from "@/directives";
 import veBaseComponents from "@/components/veBaseComponents";
 
@@ -22,8 +21,7 @@ import "normalize.css/normalize.css";
 import "nprogress/nprogress.css";
 import "@/styles/common.scss";
 const app = createApp(App);
-app.use(mock)
-    .use(elementIcon)
+app.use(elementIcon)
     .use(veBaseComponents)
     .use(store)
     .use(router)

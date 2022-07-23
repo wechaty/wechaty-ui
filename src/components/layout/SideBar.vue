@@ -23,7 +23,7 @@
             >
                 <slide-menu
                     v-for="item in menus"
-                    :key="item.id"
+                    :key="item.name"
                     :menu="item"
                 ></slide-menu>
             </el-menu>
@@ -38,6 +38,7 @@ import {
     sideTextColor,
     sideActiveTextColor,
 } from "@/styles/variables.scss.js";
+import mainRouter from "@/router/mainRoutes";
 import { computed } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
@@ -47,14 +48,10 @@ import SlideMenu from "./components/SlideMenu";
 const store = useStore();
 const route = useRoute();
 const opened = computed(() => store.getters.opened);
-const menus = computed(() => store.getters.menuList);
+const menus = mainRouter.children || [];
 const defaultActive = computed(() => {
-    let i = route.name.indexOf("/");
-    if (i < 0) {
-        return "/" + route.name;
-    } else {
-        return "/" + route.name.slice(0, i);
-    }
+    console.log(route.name);
+    return route.name;
 });
 </script>
 

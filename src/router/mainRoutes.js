@@ -9,13 +9,26 @@
 export default {
     path: "/",
     name: "AppMain",
-    component: () => import("@/views/AppMain.vue"),
+    component: () => import("@/layout/AppMain.vue"),
     redirect: { name: "Home" },
     children: [
         {
             path: "home",
             name: "Home",
+            meta: {
+                title: "首页",
+                icon: "HomeFilled",
+            },
             component: () => import("@/views/Home.vue"),
+        },
+        {
+            path: "plugins",
+            name: "Plugins",
+            meta: {
+                title: "插件中心",
+                icon: "Menu",
+            },
+            component: () => import("@/views/plugins/index.vue"),
         },
     ],
 };
