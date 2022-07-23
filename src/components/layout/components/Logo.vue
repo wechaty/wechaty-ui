@@ -29,7 +29,7 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 const store = useStore();
 const opened = computed(() => store.getters.opened);
-const title = "vue3-element-admin";
+const title = "Wechaty UI";
 </script>
 
 <style lang="scss" scoped>
@@ -38,6 +38,7 @@ const title = "vue3-element-admin";
     height: $nav-height;
     white-space: nowrap;
     overflow: hidden;
+
     .ve_logo_img {
         height: 100%;
         text-align: center;
@@ -48,6 +49,7 @@ const title = "vue3-element-admin";
         box-sizing: border-box;
         vertical-align: middle;
     }
+
     .ve_logo_title {
         width: $side-open-width;
         white-space: nowrap;
@@ -57,6 +59,7 @@ const title = "vue3-element-admin";
         margin: 0;
         vertical-align: middle;
         color: #000;
+
         &:hover {
             color: $base-color;
         }

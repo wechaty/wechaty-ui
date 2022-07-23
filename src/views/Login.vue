@@ -10,7 +10,7 @@
     <common>
         <div class="ve_container">
             <el-card :body-style="{ background: 'rgba(0,0,0,0.15)' }">
-                <h1>vue3-element-admin</h1>
+                <h1>Wechaty UI</h1>
                 <transition name="el-fade-in-linear">
                     <el-form
                         :model="form"
