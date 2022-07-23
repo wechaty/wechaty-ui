@@ -11,7 +11,7 @@ import { SET_MENU_LIST, SET_PERMISSION_LIST } from "@/store/modules/app/type";
 import globalRoutes from "@/router/globalRoutes";
 import mainRoutes from "@/router/mainRoutes";
 import NProgress from "nprogress";
-
+import { SET_TOKEN, SET_UNAME } from "@/store/modules/app/type";
 /**
  * 判断当前路由类型, global: 全局路由, main: 主入口路由
  * @param {*} route 当前路由
@@ -47,6 +47,19 @@ export default {
                 NProgress.start();
                 next();
             } else {
+                // 默认登录 放在路由
+                const form = {
+                    userName: "Administrator",
+                    pwd: "123456",
+                };
+                const data = await VE_API.system.login(form);
+                if (data.code === "00") {
+                    const { token, uname } = data;
+                    store.dispatch(`app/${SET_TOKEN}`, token);
+                    store.dispatch(`app/${SET_UNAME}`, uname);
+                    // success.value = true;
+                    router.push({ name: "AppMain" });
+                }
                 // let token = sessionStorage.getItem("token");
                 if (!token || !/\S/.test(token)) {
                     next({ name: "Login" });
