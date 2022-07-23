@@ -47,7 +47,7 @@ export default {
                 NProgress.start();
                 next();
             } else {
-                // 默认登录 放在路由
+                // 默认登录 放在路由（考虑到后期权健的校验）
                 const form = {
                     userName: "Administrator",
                     pwd: "123456",
