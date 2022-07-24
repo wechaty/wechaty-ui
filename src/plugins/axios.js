@@ -17,11 +17,11 @@ import NProgress from "nprogress";
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-const install = (app, { router, opt }) => {
+const install = (app, { router, store, opt }) => {
     let config = {
         Global: true,
-        baseURL: "http://dev.chatie.io:8004", // 正常情况取用户输入的服务地址， 目前测试阶段固定获取
-        // baseURL: store.getters.botServer || "http://dev.chatie.io:8004",
+        // baseURL: "http://dev.chatie.io:8004", // 正常情况取用户输入的服务地址， 目前测试阶段固定获取
+        baseURL: store.getters.botServer || "http://dev.chatie.io:8004",
         // timeout: 60 * 1000, // Timeout
         // withCredentials: true, // Check cross-site Access-Control
         // {"userName":"Administrator","pwd":"123456"}

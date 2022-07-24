@@ -17,6 +17,8 @@ export default {
             if (!botServer) {
                 ElMessageBox.prompt("请输入服务器地址", "提示", {
                     showClose: false,
+                    inputPlaceholder: "bot server",
+                    inputValue: "http://dev.chatie.io:8004",
                     closeOnClickModal: false,
                     closeOnPressEscape: false,
                     confirmButtonText: "确认",

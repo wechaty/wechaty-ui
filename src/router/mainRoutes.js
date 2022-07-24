@@ -30,5 +30,15 @@ export default {
             },
             component: () => import("@/views/plugins/index.vue"),
         },
+        {
+            path: "plugin-ui",
+            name: "PluginUi",
+            hide: true,
+            meta: {
+                title: "插件ui",
+                icon: "Menu",
+            },
+            component: () => import("@/views/plugins/IFrame.vue"),
+        },
     ],
 };

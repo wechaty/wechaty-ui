@@ -16,7 +16,6 @@ import elementIcon from "@/plugins/svgicon";
 import permission from "@/plugins/permission";
 import directives from "@/directives";
 import veBaseComponents from "@/components/veBaseComponents";
-
 import "normalize.css/normalize.css";
 import "nprogress/nprogress.css";
 import "@/styles/common.scss";

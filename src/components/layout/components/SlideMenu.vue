@@ -9,7 +9,7 @@
 <template>
     <el-sub-menu
         :index="menu.name + ''"
-        v-if="menu.children && menu.children.length > 0"
+        v-if="!menu.hide && menu.children && menu.children.length > 0"
     >
         <template #title>
             <el-icon :size="16" style="margin-right: 6px">
@@ -23,7 +23,11 @@
             :menu="child"
         ></slide-menu>
     </el-sub-menu>
-    <el-menu-item v-else :index="menu.name" @click="clickMenu(menu)">
+    <el-menu-item
+        v-else-if="!menu.hide"
+        :index="menu.name"
+        @click="clickMenu(menu)"
+    >
         <el-icon :size="16" style="margin-right: 6px">
             <component :is="menu.meta.icon" />
         </el-icon>
