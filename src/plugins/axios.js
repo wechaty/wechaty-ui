@@ -10,7 +10,6 @@
 "use strict";
 
 import axios from "axios";
-import Qs from "qs";
 import NProgress from "nprogress";
 
 // Full config:  https://github.com/axios/axios#request-config
@@ -27,9 +26,9 @@ const install = (app, { router, store, opt }) => {
         // {"userName":"Administrator","pwd":"123456"}
         // userName=Administrator&pwd=123456
     };
-    if (VE_ENV.MODE === "production") {
-        config.transformRequest = [(data) => Qs.parse(data)];
-    }
+    // if (VE_ENV.MODE === "production") {
+    //     config.transformRequest = [(data) => Qs.parse(data)];
+    // }
 
     const _axios = axios.create(config);
     let ve_loading;
