@@ -7,8 +7,11 @@
             >
         </div>
 
-        <el-row :gutter="20">
+        <el-row style="flex-wrap: wrap" type="flex" :gutter="20">
             <el-col
+                :sm="24"
+                :md="12"
+                :lg="6"
                 :span="6"
                 v-for="item in plugins"
                 :key="item.name"

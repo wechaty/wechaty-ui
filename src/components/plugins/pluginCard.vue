@@ -8,7 +8,9 @@
                         fit="scale-down"
                         class="plugin-avatar"
                     ></el-avatar>
-                    <span> {{ info.name }}</span>
+                    <el-tooltip :content="info.name">
+                        <span class="plugin-name"> {{ info.name }}</span>
+                    </el-tooltip>
                 </div>
                 <div class="right">
                     <el-switch
@@ -185,6 +187,7 @@ const goView = () => {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
     .left,
     .right {
         display: flex;
@@ -193,6 +196,13 @@ const goView = () => {
     }
     .plugin-avatar {
         margin-right: 10px;
+    }
+    .plugin-name {
+        display: block;
+        width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }
 .plugin-info {
